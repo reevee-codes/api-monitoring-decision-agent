@@ -1,3 +1,4 @@
+from decision.llm_decision import llm_decide
 from environment import check_api
 
 
@@ -22,6 +23,15 @@ class Agent:
         return status
 
     def decide(self, observation):
+        state = {"ok_count": self.ok_count,
+                 "error_count": self.error_count,
+                 "timeout_count": self.timeout_count,
+                 "last_observation": observation}
+        try:
+            llm_return =  llm_decide(state)
+            return llm_return["decision"]
+        except Exception:
+            pass
         if self.ok_count == 3:
             return "STOP"
         if self.error_count == 3:

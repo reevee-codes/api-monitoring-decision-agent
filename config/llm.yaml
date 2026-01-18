@@ -1,0 +1,23 @@
+model_name: "gpt-4.1-mini"
+temperature: 0.0
+max_tokens: 200
+timeout: 5
+
+prompt: |
+  You are a decision engine for API monitoring.
+  You must return ONLY valid JSON.
+  No explanations. No text. No commentary.
+
+  Input fields:
+  - ok_count (int)
+  - error_count (int)
+  - timeout_count (int)
+  - last_status (str)
+  - latency_ms (float)
+
+  Output JSON must contain:
+  {
+    "decision": "RETRY" | "IGNORE" | "ALERT" | "ESCALATE",
+    "incident_type": "HEALTHY" | "TRANSIENT_ERROR" | "PERSISTENT_ERROR" | "TIMEOUT_INSTABILITY" | "UNKNOWN",
+    "confidence": float
+  }
