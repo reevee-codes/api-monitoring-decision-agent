@@ -40,13 +40,10 @@ If it prints the key → setup is correct.
 * If the key is missing or invalid, the system **automatically falls back** to rule‑based decisions
 
 ---
-
 ## Run
 
 ```bash
 python main.py
 ```
-
 ---
-
 **Project focus:** AI‑driven decision system with deterministic fallback.
